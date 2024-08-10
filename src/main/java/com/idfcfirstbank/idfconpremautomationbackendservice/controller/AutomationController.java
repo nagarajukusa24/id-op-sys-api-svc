@@ -15,7 +15,6 @@ import java.util.List;
         allowedHeaders = "*",
         methods = { RequestMethod.GET, RequestMethod.POST }
 )
-//@Api(value = "Node Management System")
 public class AutomationController {
 
     @Autowired

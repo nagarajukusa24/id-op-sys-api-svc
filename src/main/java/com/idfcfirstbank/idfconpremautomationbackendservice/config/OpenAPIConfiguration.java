@@ -17,7 +17,6 @@ public class OpenAPIConfiguration {
         server.setUrl("http://localhost:8080");
         server.setDescription("Development");
 
-
         Info information = new Info()
                 .title("IDFC OnPrem Automation System API Docs")
                 .version("1.0")
