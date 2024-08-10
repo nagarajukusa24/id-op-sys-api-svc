@@ -19,4 +19,16 @@ public class AutomationService {
     public List<Node> fetchNodeWithInputIP(String ip) {
         return automationRepository.fetchNodeByInputIP(ip);
     }
+
+    public List<Node> fetchAllNodesWithRelationships() {
+        return automationRepository.findAllNodesWithRelationships();
+    }
+
+    public Integer fetchNodeCount() {
+        return automationRepository.getNodeCount();
+    }
+
+    public Integer fetchRelationCount() {
+        return automationRepository.getRelationCount();
+    }
 }

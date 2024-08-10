@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/api/v1")
@@ -30,22 +29,18 @@ public class AutomationController {
         return automationService.fetchNodeWithInputIP(ip);
     }
 
-    @GetMapping("/dummy")
-    public Map<String, Object> getGraphData() {
+    @GetMapping("/fetch-graph")
+    public List<Node> getNodesWithRelationships() {
+        return automationService.fetchAllNodesWithRelationships();
+    }
 
-        List<Map<String, Object>> nodes = List.of(
-                Map.of("id", 1, "name", "Node 1"),
-                Map.of("id", 2, "name", "Node 2"),
-                Map.of("id", 3, "name", "Node 3"),
-                Map.of("id", 4, "name", "Node 4")
-        );
+    @GetMapping("/node-counter")
+    public Integer getNodeCountFromDB() {
+        return automationService.fetchNodeCount();
+    }
 
-        List<Map<String, Object>> links = List.of(
-                Map.of("source", 1, "target", 2),
-                Map.of("source", 2, "target", 3),
-                Map.of("source", 2, "target", 4)
-        );
-
-        return Map.of("nodes", nodes, "links", links)   ;
+    @GetMapping("relation-counter")
+    public Integer getRelationCountFromDB() {
+        return automationService.fetchRelationCount();
     }
 }
