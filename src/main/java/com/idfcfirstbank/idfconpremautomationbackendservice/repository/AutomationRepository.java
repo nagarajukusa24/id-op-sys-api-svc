@@ -24,4 +24,7 @@ public interface AutomationRepository extends Neo4jRepository<Node, String> {
 
     @Query("MATCH ()-[r]->() RETURN count(r) AS count")
     Integer getRelationCount();
+
+    @Query("MATCH (n)-[r]->(m) WHERE type(r) = $relationType RETURN n, collect(r), collect(m)")
+    List<Node> fetchGraphByRelationType(String relationType);
 }

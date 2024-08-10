@@ -2,6 +2,7 @@ package com.idfcfirstbank.idfconpremautomationbackendservice.controller;
 
 import com.idfcfirstbank.idfconpremautomationbackendservice.model.Node;
 import com.idfcfirstbank.idfconpremautomationbackendservice.service.AutomationService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,6 +15,7 @@ import java.util.List;
         allowedHeaders = "*",
         methods = { RequestMethod.GET, RequestMethod.POST }
 )
+//@Api(value = "Node Management System")
 public class AutomationController {
 
     @Autowired
@@ -42,5 +44,10 @@ public class AutomationController {
     @GetMapping("relation-counter")
     public Integer getRelationCountFromDB() {
         return automationService.fetchRelationCount();
+    }
+
+    @GetMapping("/fetch-node-by-relation")
+    public List<Node> fetchNodesByRelationType(@RequestParam(name = "relationType") String relationType) {
+        return automationService.fetchGraphByRelationType(relationType);
     }
 }

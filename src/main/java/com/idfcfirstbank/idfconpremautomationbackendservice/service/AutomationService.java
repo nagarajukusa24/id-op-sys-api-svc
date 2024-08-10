@@ -31,4 +31,8 @@ public class AutomationService {
     public Integer fetchRelationCount() {
         return automationRepository.getRelationCount();
     }
+
+    public List<Node> fetchGraphByRelationType(String relationType) {
+        return automationRepository.fetchGraphByRelationType(relationType);
+    }
 }
